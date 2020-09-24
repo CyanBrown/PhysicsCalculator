@@ -1,4 +1,5 @@
 #Python Physics Calculator
+#####Author: Cyan Brown
 ***
 ####Starting Notes
 ***
