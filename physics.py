@@ -3,21 +3,27 @@ from projectile import projectile
 
 
 class handler:
-    def __init__(self, V=None, V0=None, X=None, X0=None, T=None, A=None, from_vector=['x', 0, 0], round_to=3):
+    def __init__(self, V=None, V0=None, X=None, X0=None, T=None, A=None, from_vector=['x', 0, 0], round_to=3,
+                 measure='deg'):
         self.values = {'V': V, 'V0': V0, 'X': X, 'X0': X0, 'T': T, 'A': A}
         self.from_vector = from_vector
         self.round_to = round_to
         self.handle()
+        self.measure = measure
 
     def handle(self):
 
         if self.from_vector[0] == 'x' and self.from_vector[1] + self.from_vector[2] != 0:
-            self.values['V0'] = projectile.projectile.composite_vector(self.from_vector[1], self.from_vector[2])[0]
+            self.values['V0'] = \
+            projectile.composite_vector(self.from_vector[1], self.from_vector[2], measure=self.measure)[0]
         elif self.from_vector[0] == 'y' and self.from_vector[1] + self.from_vector[2] != 0:
-            self.values['V0'] = projectile.projectile.composite_vector(self.from_vector[1], self.from_vector[2])[1]
+            self.values['V0'] = \
+            projectile.composite_vector(self.from_vector[1], self.from_vector[2], measure=self.measure)[1]
         elif self.from_vector[0] == 'projectile':
-            self.x_vel, self.y_vel = projectile.composite_vector(self.from_vector[1], self.from_vector[2])
-            self.values_y = {'X0': self.values['X0'], 'V0': self.y_vel, 'X': 0, 'A': -10, 'T': None, 'V': -self.y_vel}
+            self.x_vel, self.y_vel = projectile.composite_vector(self.from_vector[1], self.from_vector[2],
+                                                                 measure=self.measure)
+            self.values_y = {'X0': self.values['X0'], 'V0': self.y_vel, 'X': self.values['X'], 'A': -9.8,
+                             'T': self.values['T'], 'V': -self.y_vel}
             self.values_y = kinematics.calculate_attributes(self.values_y)
             print(self.values_y, 'this is the test from in handle')
             self.values_x = {'X0': self.values['X0'], 'V0': self.x_vel, 'X': None, 'A': 0, 'V': self.x_vel,
