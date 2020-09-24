@@ -1,16 +1,16 @@
-#Python Physics Calculator
-#####Author: Cyan Brown
+# Python Physics Calculator
+##### Author: Cyan Brown
 ***
-####Starting Notes
+#### Starting Notes
 ***
 * gravitational constant is 9.8
 * air resistance considered negligible
 * There are some random errors that I am working out
 ***
-####Kinematics
+#### Kinematics
 ***
-#####Params:
-######*All params are integer or float
+##### Params:
+###### *All params are integer or float
 * A (acceleration)
 * T (total time)
 * V0 (velocity initial)
@@ -18,9 +18,9 @@
 * X0 (position initial)
 * X (position final)
 ***
-####Projectile
+#### Projectile
 ***
-#####Params:
+##### Params:
 * Initial Vector
     * from_vector (list) (required)
         * index 0 (str) options
@@ -34,11 +34,11 @@
         * 'rad': type of unit for from_vector[2] is radian
         
 ***
-####Shared Params
+#### Shared Params
 ***
-#####Params:
+##### Params:
 * round_to (int) (asummed 3) = set how many decimal places to round to
 
-###Examples
+### Examples
 ***
 [More Examples](https://github.com/CyanBrown/PhysicsCalculator/blob/master/example.py)
