@@ -1,8 +1,7 @@
 import math
 import matplotlib.pyplot as plt
-from kinematics import kinematics
+from src.kinematics import kinematics
 import numpy as np
-import sys
 
 
 def matrix_calc(e1, e2, e3):

@@ -1,4 +1,4 @@
-from physics import handler
+from src.physics import handler
 
 # example of handler class for simple kinematics
 obj = handler(A=-10, X0=0, V0=7, T=6.7)

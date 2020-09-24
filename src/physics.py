@@ -1,5 +1,5 @@
-from kinematics import kinematics
-from projectile import projectile
+from src.kinematics import kinematics
+from src.projectile import projectile
 
 
 class handler:
