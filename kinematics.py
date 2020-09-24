@@ -14,6 +14,10 @@ class kinematics:
     order = {}
 
     def __init__(self, X=None, X0=None, V=None, V0=None, A=None, T=None, round_to=3):
+        """
+            :param X,X0,V,V0,A,T FLOAT / INT takes all known kinematic values
+            :param round_to INT determines the decimal place to round to default is 3
+        """
         self.values = {'X': X, 'X0': X0, 'V': V, 'V0': V0, 'A': A, 'T': T}
         self.has_all_vals = False
         self.round_to = round_to
@@ -21,12 +25,17 @@ class kinematics:
         self.__calculate_attributes()
 
     def __kinematic1(self):
+        # first kinematic equation
         # V = V0+AT
+
+        # list of elements that matter for this equation
         self.elements_k1 = [self.values['V0'], self.values['V'], self.values['A'], self.values['T']]
 
+        # makes sure there is only one unknown variable
         if occurances(self.elements_k1, None) > 1:
             return None
 
+        # calculates for each value
         if self.values['V'] == None:
             return {'V': round(float(self.values['V0'] + (self.values['A'] * self.values['T'])), self.round_to)}
         elif self.values['V0'] == None:
@@ -37,13 +46,18 @@ class kinematics:
             return {'T': round(float((self.values['V'] - self.values['V0']) / self.values['A']), self.round_to)}
 
     def __kinematic2(self):
+        # second kinematic equation
         # X = X0+V0(T)+.5(A)(T)^2
 
+        # list of elements required for k2
         self.elements_k2 = [self.values['X'], self.values['X0'], self.values['V0'], self.values['A'], self.values['T']]
 
+        # makes sure there is only one unknown variable
         if occurances(self.elements_k2, None) > 1:
             return None
 
+        # calculates for each value
+        # TODO: at calculation for T
         if self.values['X'] == None:
             return {'X': round(float(
                 self.values['X0'] + self.values['V0'] * self.values['T'] + .5 * self.values['A'] * (
@@ -70,6 +84,8 @@ class kinematics:
         if occurances(self.elements_k3, None) > 1:
             return None
 
+        # calculates for each value
+        # TODO: add acceleration calculation
         if self.values['V'] == None:
             return {'V': round(float(
                 math.sqrt(self.values['V0'] ** 2 + 2 * self.values['A'] * (self.values['X'] - self.values['X0']))),
@@ -115,6 +131,7 @@ class kinematics:
             self.values['T'] = -self.values['T']
             self.values['V'] = -self.values['V']
 
+    # TODO: eventually going to remove all static methods
     @staticmethod
     def kinematic1(V0=None, V=None, A=None, T=None, round_to=3):
         # V = V0+AT

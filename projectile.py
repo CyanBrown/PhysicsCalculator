@@ -25,20 +25,6 @@ class projectile:
             return [round(magnitude * math.cos(deg_from_horz), round_to),
                     round(magnitude * math.sin(deg_from_horz), round_to)]
 
-    # @staticmethod
-    # def kinematics_points(y_values,x_values):
-    #     x_coords = []
-    #     y_coords = []
-    #     total_length = math.ceil(x_values['X'])
-    #     for i in range(0, total_length, .5):
-    #         if abs(i) >= abs(values['X']):
-    #             y_coords.append(0)
-    #             x_coords.append()
-    #             return [x_coords,y_coords]
-    #
-    #         values['X'] = i
-    #         kinematics.calculate_attributes(values)
-
     @staticmethod
     def vals_to_time(v):
         coords = []
