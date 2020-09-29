@@ -29,7 +29,7 @@ Y to Time             |  X to Time           |Y to X
 :--------------------:|:--------------------:|:--------------------:
  ![](examples/ty_example.png)|  ![](examples/tx_example.png)|![](examples/xy_example.png)
 
-[More Examples](https://github.com/CyanBrown/PhysicsCalculator/blob/master/example.py)
+[More Examples](https://github.com/CyanBrown/PhysicsCalculator/tree/master/examples)
 
 ### Known Issues
 * You cannot add custom kinematic values for projectiles, it only works with vectors alone
