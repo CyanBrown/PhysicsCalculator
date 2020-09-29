@@ -3,7 +3,7 @@
 ***
 #### Starting Notes
 ***
-* gravitational constant is 9.8
+* gravitational acceleration is 9.8
 * air resistance considered negligible
 * There are some random errors that I am working out
 ***
@@ -27,7 +27,7 @@
 ***
 Y to Time             |  X to Time           |Y to X
 :--------------------:|:--------------------:|:--------------------:
- ![](ty_example.png)|  ![](tx_example.png)|![](xy_example.png)
+ ![](examples/ty_example.png)|  ![](examples/tx_example.png)|![](examples/xy_example.png)
 
 [More Examples](https://github.com/CyanBrown/PhysicsCalculator/blob/master/example.py)
 

@@ -106,7 +106,7 @@ class projectile:
         formula = self.__vals_to_time('X')
 
         if style == "ty":
-            x, y = self.__create_all_points(self.y_values['T'], formula[0])
+            x, y = self.__create_all_points(self.y_values['T'], formula[1])
             plt.plot(x, y)
 
             plt.title(projectile.GRAPH_FORMATS['ty']['title'])
@@ -114,7 +114,7 @@ class projectile:
             plt.ylabel(projectile.GRAPH_FORMATS['ty']['y_label'])
 
         elif style == "tx":
-            x, y = self.__create_all_points(self.y_values['T'], formula[1])
+            x, y = self.__create_all_points(self.y_values['T'], formula[0])
             plt.plot(x, y)
 
             plt.title(projectile.GRAPH_FORMATS['tx']['title'])
