@@ -18,6 +18,8 @@ class projectile:
         if ykin['X0'] == None and ykin['X'] == None:
             ykin['X0'] = ykin['X'] = 0
             help = True
+        else:
+            help = False
 
         self.y_values = ykin
         self.y_values['A'] = -9.8
@@ -100,24 +102,32 @@ class projectile:
         return (x, y)
 
     def graph(self, style="ty"):
+
+        formula = self.__vals_to_time('X')
+
         if style == "ty":
-            formula = self.__vals_to_time('X')[1]
-            x, y = self.__create_all_points(self.y_values['T'], formula)
+            x, y = self.__create_all_points(self.y_values['T'], formula[0])
             plt.plot(x, y)
 
-            plt.title = projectile.GRAPH_FORMATS['ty']['title']
-            plt.xlabel = projectile.GRAPH_FORMATS['ty']['x_label']
-            plt.ylabel = projectile.GRAPH_FORMATS['ty']['y_label']
+            plt.title(projectile.GRAPH_FORMATS['ty']['title'])
+            plt.xlabel(projectile.GRAPH_FORMATS['ty']['x_label'])
+            plt.ylabel(projectile.GRAPH_FORMATS['ty']['y_label'])
 
         elif style == "tx":
-            formula = self.__vals_to_time('X')[0]
-            x, y = self.__create_all_points(self.y_values['T'], formula)
+            x, y = self.__create_all_points(self.y_values['T'], formula[1])
             plt.plot(x, y)
 
-            plt.title = projectile.GRAPH_FORMATS['tx']['title']
-            plt.xlabel = projectile.GRAPH_FORMATS['tx']['x_label']
-            plt.ylabel = projectile.GRAPH_FORMATS['tx']['y_label']
+            plt.title(projectile.GRAPH_FORMATS['tx']['title'])
+            plt.xlabel(projectile.GRAPH_FORMATS['tx']['x_label'])
+            plt.ylabel(projectile.GRAPH_FORMATS['tx']['y_label'])
 
-        # TODO: haven't implemeted xy graph yet
+        elif style == "xy":
+            x = self.__create_all_points(self.y_values['T'], formula[0])[1]
+            y = self.__create_all_points(self.y_values['T'], formula[1])[1]
+            plt.plot(x, y)
+
+            plt.title(projectile.GRAPH_FORMATS['xy']['title'])
+            plt.xlabel(projectile.GRAPH_FORMATS['xy']['x_label'])
+            plt.ylabel(projectile.GRAPH_FORMATS['xy']['y_label'])
 
         plt.show()

@@ -7,7 +7,7 @@
 * air resistance considered negligible
 * There are some random errors that I am working out
 ***
-#### Kinematics
+#### Physics Class
 ***
 ##### Params:
 ###### *All params are integer or float
@@ -17,28 +17,19 @@
 * V (velocity final)
 * X0 (position initial)
 * X (position final)
-***
-#### Projectile
-***
-##### Params:
-* Initial Vector
-    * from_vector (list) (required)
-        * index 0 (str) options
-            * 'x': calculate x vector as normal kinematic from above
-            * 'y': calculate y vector as normal kinematic from above
-            * 'projectile': calculate y and x vector using kinematics from above and calculate graph values
-        * index 1 (int or float): magnitude of composite vector
-        * index 2 (int or float): radians or degrees from horizontal axis
-    * measure (str) (assumes deg)
-        * 'deg': type of unit for from_vector[2] is degree
-        * 'rad': type of unit for from_vector[2] is radian
-        
-***
-#### Shared Params
-***
-##### Params:
+* vector (list) (required for projectile)
+    * Index 0 - magnitude of vector
+    * Index 1 - degrees or radians from x axis
 * round_to (int) (asummed 3) = set how many decimal places to round to
+* measure (str) (degree mode assumed) - deg for degree, rad for radian
 
 ### Examples
 ***
+Y to Time             |  X to Time           |Y to X
+:--------------------:|:--------------------:|:--------------------:
+ ![](ty_example.png)|  ![](tx_example.png)|![](xy_example.png)
+
 [More Examples](https://github.com/CyanBrown/PhysicsCalculator/blob/master/example.py)
+
+### Known Issues
+* You cannot add custom kinematic values for projectiles, it only works with vectors alone

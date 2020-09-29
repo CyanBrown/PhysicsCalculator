@@ -4,6 +4,9 @@ from src.projectile import projectile
 class physics:
     def __init__(self, V=None, V0=None, X=None, X0=None, T=None, A=None, vector=None, round_to=3, measure='deg'):
 
+        projectile.ROUND_TO = round_to
+        kinematics.ROUND_TO = round_to
+
         self.values = {"V": V, "V0": V0, "X": X, "X0": X0, "T": T, "A": A}
         self.round_to = round_to
 
