@@ -25,10 +25,13 @@
 
 ### Examples
 ***
-Y to Time             |  X to Time           |Y to X
-:--------------------:|:--------------------:|:--------------------:
- ![](examples/ty_example.png)|  ![](examples/tx_example.png)|![](examples/xy_example.png)
+Y to Time             |  X to Time           
+:--------------------:|:--------------------:|
+ ![](examples/ty_example.png)|  ![](examples/tx_example.png)
 
+Y to X                |Y and X to Time
+:--------------------:|:--------------------:|
+![](examples/xy_example.png)|![](examples/all_example.png)
 [More Examples](https://github.com/CyanBrown/PhysicsCalculator/tree/master/examples)
 
 ### Known Issues
