@@ -3,11 +3,12 @@ import math
 import matplotlib.pyplot as plt
 from src.kinematics import kinematics
 from src.errors import *
+import src.staticPhysics as sP
 
 
 class projectile:
     ROUND_TO = 3
-    GRAVATATIONAL_CONSTANT_MAGNITUDE = 9.8
+    GRAVITATIONAL_CONSTANT_MAGNITUDE = 9.8
 
     # these are the premade graph formats as a dict
     GRAPH_FORMATS = {
@@ -37,14 +38,17 @@ class projectile:
             help = False
 
         self.y_values = ykin
-        self.y_values['A'] = -projectile.GRAVATATIONAL_CONSTANT_MAGNITUDE
+        self.y_values['A'] = -projectile.GRAVITATIONAL_CONSTANT_MAGNITUDE
         self.x_values = {"X0": 0, "X": None, "A": 0}
 
         self.measure = measure
         self.deg_from_x = deg_from_x
         self.magnitude = magnitude
 
-        self.__composite_vector()
+        vectors = sP.to_composite_vector([self.magnitude, self.deg_from_x], measure=self.measure)
+
+        self.x_values['V0'] = self.x_values['V'] = vectors[0]
+        self.y_values['V0'] = vectors[1]
 
         # if default values were set then V0=V
         if help:
@@ -73,22 +77,6 @@ class projectile:
         formula = str(vals[0]) + "*pow(x,2)+" + str(vals[1]) + "*x+" + str(vals[2])
 
         return formula
-
-    def __composite_vector(self):
-        """
-        :return: create V0 for both x and y direction kinematics from vector given in init
-        """
-
-        # decomposes vector to calculate V0 for both x and y directions
-        if self.measure == 'deg':
-            vectors = [round(self.magnitude * math.cos(math.radians(self.deg_from_x)), projectile.ROUND_TO),
-                       round(self.magnitude * math.sin(math.radians(self.deg_from_x)), projectile.ROUND_TO)]
-        elif self.measure == 'rad':
-            vectors = [round(self.magnitude * math.cos(self.deg_from_x), projectile.ROUND_TO),
-                       round(self.magnitude * math.sin(self.deg_from_x), projectile.ROUND_TO)]
-
-        self.x_values['V0'] = self.x_values['V'] = vectors[0]
-        self.y_values['V0'] = vectors[1]
 
     def __vals_to_time(self, value_to_return):
         """

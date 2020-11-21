@@ -2,7 +2,7 @@ from src.kinematics import kinematics
 from src.projectile import projectile
 
 class physics:
-    GRAVATATIONAL_CONSTANT_MAGNITUDE = 9.8
+    GRAVITATIONAL_CONSTANT_MAGNITUDE = 9.8
 
     def __init__(self, V=None, V0=None, X=None, X0=None, T=None, A=None, vector=None, round_to=3, measure='deg'):
 
@@ -20,7 +20,7 @@ class physics:
 
         projectile.ROUND_TO = round_to
         kinematics.ROUND_TO = round_to
-        projectile.GRAVATATIONAL_CONSTANT_MAGNITUDE = physics.GRAVATATIONAL_CONSTANT_MAGNITUDE
+        projectile.GRAVITATIONAL_CONSTANT_MAGNITUDE = physics.GRAVITATIONAL_CONSTANT_MAGNITUDE
 
         self.values = {"V": V, "V0": V0, "X": X, "X0": X0, "T": T, "A": A}
         self.round_to = round_to

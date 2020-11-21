@@ -9,3 +9,7 @@ class graphError(Exception):
 
 class kinemticError(Exception):
     pass
+
+
+class InfoError(Exception):
+    pass
