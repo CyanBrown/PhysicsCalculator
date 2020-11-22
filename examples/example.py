@@ -53,14 +53,14 @@ print(starting_mag_deg_vector)
 converted_xy_vector = sp.to_composite_vector(starting_mag_deg_vector)
 print(converted_xy_vector)
 
-converted_mag_deg_vector = sp.to_magnitude_degree_vector(converted_xy_vector)
+converted_mag_deg_vector = sp.to_magnitude_degree_angle(converted_xy_vector)
 print(converted_mag_deg_vector)
 
 vectors = [sp.generate_random_vector(range1=[100, 150], range2=[0, 360]) for _ in range(0, 5)]
 print(vectors)
 combined_vector = sp.combine_vector_composition(*vectors)
 print(combined_vector)
-mag_deg_combined_vector = sp.combine_vector_magnitude_degree("deg", *vectors)
+mag_deg_combined_vector = sp.combine_vector_magnitude_angle("deg", *vectors)
 print(mag_deg_combined_vector)
 
 """
