@@ -1,4 +1,11 @@
 # Python Physics Calculator
+
+# Purpose
+
+[Explain what this does in general terms] 
+
+# Usage 
+
 ##### Author: Cyan Brown
 ***
 #### Starting Notes
@@ -94,3 +101,8 @@ Free Body Diagram     |
 
 ### Known Issues
 * You cannot add custom kinematic values for projectiles, it only works with vectors alone
+
+# Contributing
+
+[In this section we will beging to define how anyone 
+who will contribute is to make such a contribution]
