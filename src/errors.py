@@ -13,3 +13,7 @@ class kinemticError(Exception):
 
 class InfoError(Exception):
     pass
+
+
+class VectorError(Exception):
+    pass

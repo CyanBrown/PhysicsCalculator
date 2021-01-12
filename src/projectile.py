@@ -3,11 +3,9 @@ import math
 import matplotlib.pyplot as plt
 from src.kinematics import kinematics
 from src.errors import *
-import src.staticPhysics as sP
 
 
 class projectile:
-    ROUND_TO = 3
     GRAVITATIONAL_CONSTANT_MAGNITUDE = 9.8
 
     # these are the premade graph formats as a dict
@@ -18,17 +16,12 @@ class projectile:
         "all": {"title": "Position as a Function of Time", "x_label": "Time", "y_label": "Position"},
     }
 
-    def __init__(self, magnitude, deg_from_x, ykin, measure='deg'):
-
-        """
-        :param magnitude: double magnitude of vector
-        :param deg_from_x: double degree or radian of vector from x axis
-        :param ykin: dict known y values
-        :param measure: deg_from_x in deg or rad (degrees or radians)
+    def __init__(self, vector, ykin):
         """
 
-        # making the roundto number the same for all calculation classes
-        kinematics.ROUND_TO = projectile.ROUND_TO
+        :param vector: vector of projectile
+        :param ykin: y kinematics
+        """
 
         # if default position needs to be set it is set
         if ykin['X0'] == None and ykin['X'] == None:
@@ -39,16 +32,9 @@ class projectile:
 
         self.y_values = ykin
         self.y_values['A'] = -projectile.GRAVITATIONAL_CONSTANT_MAGNITUDE
-        self.x_values = {"X0": 0, "X": None, "A": 0}
+        self.x_values = {"X0": 0, "X": None, "A": 0, 'V0': vector.x, 'V': vector.x}
 
-        self.measure = measure
-        self.deg_from_x = deg_from_x
-        self.magnitude = magnitude
-
-        vectors = sP.to_composite_vector([self.magnitude, self.deg_from_x], measure=self.measure)
-
-        self.x_values['V0'] = self.x_values['V'] = vectors[0]
-        self.y_values['V0'] = vectors[1]
+        self.y_values['V0'] = vector.y
 
         # if default values were set then V0=V
         if help:

@@ -3,7 +3,7 @@
 ***
 #### Starting Notes
 ***
-* gravitational acceleration is 9.8
+* gravitational acceleration is 9.81
 * air resistance considered negligible
 * There are some random errors that I am working out
 ***
@@ -17,18 +17,17 @@
 * V (velocity final)
 * X0 (position initial)
 * X (position final)
-* vector (list) (required for projectile)
-    * Index 0 - magnitude of vector
-    * Index 1 - degrees or radians from x axis
-* round_to (int) (asummed 3) = set how many decimal places to round to
-* measure (str) (degree mode assumed) - deg for degree, rad for radian
+* vector (initial vector if projectile)
+
 ***
-#### Vector Types:
+#### Vector Class:
 ***
-* magnitude angle vector (referred to as 'mag_ang')
-    * represented as list with 2 floats [magnitude, degrees (or radians) from initial position]
-* x part, y part vector (referred to as 'xy')
-    * represented as list with 2 floats [x component, y component]
+
+##### Init Params
+* vector_type (composite or mag_ang)
+* data1 (x component, or magnitude)
+* data2 (y component, or angle measurement)
+* measure ('degrees' or 'radians' if you chose mag_ang vector)
  
 
 ***
@@ -37,12 +36,10 @@
    
 ##### Init Params:
 * mass = mass of object in kilograms
-* force_vector = the applied force on the object (uses one of the above vector types)
+* force_vector = the applied force on the object
 * static_friction_coefficient = the coefficient of static friction
 * kinetic_friction_coefficient = the coefficient of kinetic friction
-* measure = 'deg' for degree or 'rad' for radian, used for magnitude angle vector type
 * starting_velocity = if the object is already moving, this is the velocity
-* vector_type (default to 'mag_ang') = the type of vector given in parameter 'force_vector'
 
 #### Methods
 * ##### data_at_position:
@@ -56,26 +53,8 @@
         * save (bool) (default false) = if you want to save the graph
                         
 ***
-#### staticPhysics functions
-***
-##### Common Params:
-* measure (default 'deg') = defines measure of angle in magnitude angle vector
-* ROUND_TO = entire file variable that set number of digits to round to
-##### to_composite_vector:
-* vector = mag_ang vector
-##### to_magnitude_angle_vector:
-* vector = xy vector
-##### combine_vector_magnitude_angle:
-* *argsv = mag_ang vectors
-##### combine_vector_composition:
-* *argsv = xy vectors
-##### generate_random_vector:
-* range1 (list [float, float]) = range that you want the first number of the vector to be in
-* range2 (list [float, float]) = range that you want the second number of the vector
 
 
-
-***
 ### Examples
 ***
 Y to Time             |  X to Time           
