@@ -1,9 +1,9 @@
 from src.physics import physics
 from src.physicsObject import physicsObject
-import src.staticPhysics as sp
+from src.vector import Vector
 
 # projectile calculations
-obj = physics(vector=[60, 60])
+obj = physics(vector=Vector('mag_ang', 50, 50))
 print(obj.x_values, obj.y_values)
 obj.proj.graph('all')
 obj.proj.graph('ty')
@@ -26,7 +26,7 @@ output
 """
 
 # forces calculations
-obj = physicsObject(15, [100, 35], static_friction_coefficient=.5, kinetic_friction_coefficient=.3)
+obj = physicsObject(15, Vector('composite', 100, 35), static_friction_coefficient=.5, kinetic_friction_coefficient=.3)
 print(obj)
 obj.graph_fbd()
 
@@ -46,31 +46,42 @@ the graph named "15, [100,35].jpg"
 {'V': 47.684, 'V0': 0, 'X': 309.946, 'X0': 0, 'T': 13, 'A': 3.668}
 """
 
-# static physics functions - set to default degree
-starting_mag_deg_vector = sp.generate_random_vector(range1=[100, 150], range2=[0, 360])
-print(starting_mag_deg_vector)
+vect1 = Vector('mag_ang', 150, 125)
+vect2 = Vector('composite', -30, -10)
 
-converted_xy_vector = sp.to_composite_vector(starting_mag_deg_vector)
-print(converted_xy_vector)
+print(vect1, vect2)
 
-converted_mag_deg_vector = sp.to_magnitude_degree_angle(converted_xy_vector)
-print(converted_mag_deg_vector)
+# adding and subtracting vectors
+print(vect1 + vect2)
+print(vect1 - vect2)
 
-vectors = [sp.generate_random_vector(range1=[100, 150], range2=[0, 360]) for _ in range(0, 5)]
-print(vectors)
-combined_vector = sp.combine_vector_composition(*vectors)
-print(combined_vector)
-mag_deg_combined_vector = sp.combine_vector_magnitude_angle("deg", *vectors)
-print(mag_deg_combined_vector)
+# dot product
+print(Vector.dot(vect1, vect2))
+
+# random vector
+print(Vector.generate_random_vector([0, 150], [0, 150]))
+
+# checks if vector angles are coterminal
+print(Vector.are_coterminal(vect1, vect2))
 
 """
-example output:
+Output:
 
-[115.315, 203.673]
-[-105.611, -46.301]
-[-115.315, 293.673]
+Vectors
+[-86.03646545265693, 122.87280664334875] [-30, -10]
 
-[[140.596, 234.598], [143.649, 81.223], [121.888, 48.434], [139.742, 284.725], [101.161, 28.145]]
-[647.0360000000001, 677.125]
-[149.34, 12.031]
+Added
+[-116.03646545265693, 112.87280664334875]
+
+Subtracted
+[-56.03646545265693, 132.87280664334875]
+
+Dot Product
+1352.36589714622
+
+Random Vector
+[98.67982302632979, 31.80723462751877]
+
+Are Coterminal
+False
 """
