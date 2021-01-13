@@ -3,7 +3,6 @@
 ***
 #### Starting Notes
 ***
-* EXAMPLES AREN'T YET UPDATED
 * gravitational acceleration is 9.81
 * air resistance considered negligible
 * There are some random errors that I am working out
