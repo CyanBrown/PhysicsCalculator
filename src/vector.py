@@ -83,6 +83,10 @@ class Vector():
         self.magnitude = self.y / math.sin(self.radians)
 
     @staticmethod
+    def normalize(self):
+        return Vector('composite', self.x/self.magnitude, self.y/self.magnitude)
+
+    @staticmethod
     def dot(v1, v2):
         return v1.x * v2.x + v1.y * v2.y
 
